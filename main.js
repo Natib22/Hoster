@@ -30,10 +30,12 @@ function addTask() {
       mySpan.style.textDecoration = "line-through";
       taskTitle.style.textDecoration = "line-through";
       myDiv.removeChild(complete);
+      saveData();
     });
 
     dele.addEventListener("click", function () {
       container.removeChild(myDiv);
+      saveData();
     });
 
     innerDiv.append(taskTitle);
@@ -48,5 +50,16 @@ function addTask() {
     // Clear input fields
     taskName.value = "";
     taskDescription.value = "";
+    saveData();
   }
 }
+
+function saveData() {
+  localStorage.setItem("myList", container.innerHTML);
+}
+
+function showData() {
+  container.innerHTML = localStorage.getItem("myList");
+}
+
+showData();
