@@ -20,22 +20,17 @@ function addTask() {
 
     let complete = document.createElement("button");
     complete.className = "completed";
-    complete.textContent = "Completed"; // Add button text
+    complete.textContent = "Completed";
 
     let dele = document.createElement("button");
     dele.className = "delete";
-    dele.textContent = "Delete"; // Add button text
+    dele.textContent = "Delete";
 
     complete.addEventListener("click", function () {
-      mySpan.style.textDecoration = "line-through";
-      taskTitle.style.textDecoration = "line-through";
-      myDiv.removeChild(complete);
-      saveData();
+      completeButton(myDiv, taskTitle, mySpan, complete);
     });
-
     dele.addEventListener("click", function () {
-      container.removeChild(myDiv);
-      saveData();
+      deleteButton(myDiv);
     });
 
     innerDiv.append(taskTitle);
@@ -54,12 +49,47 @@ function addTask() {
   }
 }
 
+function deleteButton(myDiv) {
+  container.removeChild(myDiv);
+  saveData();
+}
+
+function completeButton(myDiv, taskTitle, mySpan, complete) {
+  mySpan.style.textDecoration = "line-through";
+  taskTitle.style.textDecoration = "line-through";
+  myDiv.removeChild(complete);
+  saveData();
+}
+
 function saveData() {
   localStorage.setItem("myList", container.innerHTML);
 }
 
 function showData() {
-  container.innerHTML = localStorage.getItem("myList");
+  container.innerHTML = localStorage.getItem("myList") || "";
+  attachEventListeners();
+}
+
+function attachEventListeners() {
+  const tasks = container.querySelectorAll(".taskList");
+  tasks.forEach((task) => {
+    const complete = task.querySelector(".completed");
+    const dele = task.querySelector(".delete");
+    const taskTitle = task.querySelector("h2");
+    const mySpan = task.querySelector("span");
+
+    if (complete) {
+      complete.addEventListener("click", function () {
+        completeButton(task, taskTitle, mySpan, complete);
+      });
+    }
+
+    if (dele) {
+      dele.addEventListener("click", function () {
+        deleteButton(task);
+      });
+    }
+  });
 }
 
 showData();
