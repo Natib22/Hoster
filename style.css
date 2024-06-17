@@ -24,11 +24,7 @@ body {
     animation: AnimationName 59s ease infinite;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+
 
 main {
     flex: 1;
@@ -38,6 +34,7 @@ p {
     margin-top: 30px;
     text-align: center;
     font-size: 30px;
+    color: #ffa500;
 }
 
 .container {
