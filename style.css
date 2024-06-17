@@ -15,8 +15,13 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background: rgb(51,49,49);
-    background: linear-gradient(90deg, rgba(51,49,49,1) 30%, rgba(54,54,54,1) 57%, rgba(54,54,54,1) 97%);
+    
+    background: linear-gradient(180deg, #ffa500, #000000, #6e6e6e);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 59s ease infinite;
+    -moz-animation: AnimationName 59s ease infinite;
+    animation: AnimationName 59s ease infinite;
 }
 
 .wrapper {
@@ -157,4 +162,21 @@ footer {
     .parag{
         width: 60%;
     }
+}
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
 }
