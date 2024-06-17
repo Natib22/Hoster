@@ -34,7 +34,7 @@ p {
 
 .inputArea{
     background-color: dimgray;
-    height: 50px;
+    /* height: px; */
     display: flex;
     
     padding: 10px 0px 10px 0px;
@@ -137,4 +137,12 @@ h2{
     width: 80px;
     font-size: 12px;
     margin-right: 5%;
+}
+
+@media (max-width: 768px) {
+    
+    .inputContainer{
+        flex-direction: column;
+        gap: 5px;
+    }
 }
