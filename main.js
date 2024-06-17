@@ -13,10 +13,10 @@ function addTask() {
     innerDiv.className = "parag";
 
     let taskTitle = document.createElement("h2");
-    taskTitle.textContent = taskDescription.value;
+    taskTitle.textContent = taskName.value;
 
     let mySpan = document.createElement("span");
-    mySpan.textContent = taskName.value;
+    mySpan.textContent = taskDescription.value;
 
     let complete = document.createElement("button");
     complete.className = "completed";
