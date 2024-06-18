@@ -1,5 +1,23 @@
+/* Define custom color variables */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800;900&display=swap');
 
+:root {
+    --bg-gradient-start: #ffa500;
+    --bg-gradient-middle: #000000;
+    --bg-gradient-end: #6e6e6e;
+    --text-color: rgb(205, 134, 1);
+    --input-border-color: orange;
+    --input-focus-border-color: rgb(255, 179, 0);
+    --placeholder-color: orange;
+    --button-bg-color: orange;
+    --completed-border-color: rgb(0, 194, 194);
+    --completed-text-color: aqua;
+    --delete-border-color: red;
+    --delete-text-color: red;
+}
+
+/* Global reset and font setup */
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +25,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* Full height body with gradient background */
 html, body {
     height: 100%;
     margin: 0;
@@ -15,28 +34,70 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    
-    background: linear-gradient(180deg, #ffa500, #000000, #6e6e6e);
+    background: linear-gradient(180deg, var(--bg-gradient-start), var(--bg-gradient-middle), var(--bg-gradient-end));
     background-size: 600% 600%;
-
-    -webkit-animation: AnimationName 59s ease infinite;
-    -moz-animation: AnimationName 59s ease infinite;
     animation: AnimationName 59s ease infinite;
 }
 
-
-
-main {
-    flex: 1;
+/* Wrapper to contain main content */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* Centered and styled paragraph */
 p {
     margin-top: 30px;
     text-align: center;
     font-size: 30px;
-    color: #ffa500;
+    display: inline;
 }
 
+/* Dropdown styling */
+.dropdown {
+    display: flex;
+    align-items: flex-end;
+    padding-right: 2%;
+    position: relative;
+}
+
+.themeButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+/* Image styling */
+img {
+    width: inherit;
+    height: 30px;
+    background-color: transparent;
+    outline: none;
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    flex-direction: column;
+    z-index: 1;
+    bottom: 50px;
+    width: 60px;
+}
+
+/* Theme-specific classes */
+.orangeTheme {
+    color: var(--text-color);
+}
+
+.blueTheme {
+    color: lightblue;
+}
+
+/* Container for main content */
 .container {
     margin: 60px auto 100px;
     width: 600px;
@@ -45,52 +106,61 @@ p {
     gap: 5px;
 }
 
+/* Input area styling */
 .inputArea {
     background-color: rgb(83, 81, 81);
     display: flex;
     padding: 10px 0;
     border-radius: 7px 7px 0 0;
+    justify-content: space-around;
 }
 
+/* Task container styling */
 .taskContainer {
     background-color: rgb(83, 81, 81);
     border-radius: 0 0 7px 7px;
 }
 
+/* Input container styling */
 .inputContainer {
     display: flex;
     justify-content: space-evenly;
     width: 400px;
 }
 
+/* Task input field styling */
 .taskName, .taskDescription {
     border-radius: 8px;
-    border: 1px solid orange;
+    border: 1px solid var(--input-border-color);
     padding-left: 5px;
     height: 40px;
 }
 
+/* Placeholder color for inputs */
 .taskName::placeholder, .taskDescription::placeholder {
-    color: orange;
+    color: var(--placeholder-color);
 }
 
+/* Focus styling for input fields */
 .taskName:focus, .taskDescription:focus {
-    border-color: rgb(255, 179, 0);
-    color: orange;
+    border-color: var(--input-focus-border-color);
+    color: var(--placeholder-color);
     outline: none;
     padding-left: 4px;
 }
 
+/* Add button styling */
 .add {
     color: white;
-    background-color: orange;
+    background-color: var(--button-bg-color);
     border-radius: 10px;
-    width: 80px;
+    width: 60px;
     font-size: 20px;
     border: none;
-    margin-left: 10%;
+    margin-left: 3%;
 }
 
+/* Task list container */
 .taskList {
     display: flex;
     flex-direction: row;
@@ -98,10 +168,12 @@ p {
     align-items: center;
 }
 
+/* Heading style for tasks */
 h2 {
-    color: rgb(205, 134, 1);
+    color: var(--text-color);
 }
 
+/* Paragraph style for tasks */
 .parag {
     display: flex;
     flex-direction: column;
@@ -109,23 +181,26 @@ h2 {
     width: 350px;
 }
 
+/* Span within paragraph */
 .parag span {
     font-size: 15px;
 }
 
+/* Completed task button */
 .completed {
     border: solid;
-    color: aqua;
-    border-color: rgb(0, 194, 194);
+    color: var(--completed-text-color);
+    border-color: var(--completed-border-color);
     border-radius: 25px;
     height: 40px;
     width: 82px;
     font-size: 12px;
 }
 
+/* Delete task button */
 .delete {
-    color: red;
-    border-color: red;
+    color: var(--delete-text-color);
+    border-color: var(--delete-border-color);
     border-radius: 25px;
     height: 40px;
     width: 80px;
@@ -133,6 +208,7 @@ h2 {
     margin-right: 5%;
 }
 
+/* Footer styling */
 footer {
     background-color: #333;
     color: #fff;
@@ -143,6 +219,7 @@ footer {
     bottom: 0;
 }
 
+/* Media query for smaller screens */
 @media (max-width: 768px) {
     .inputContainer {
         flex-direction: column;
@@ -153,27 +230,46 @@ footer {
     .container {
         width: 100%;
     }
-    .delete{
+    .delete {
         margin-right: 1%;
     }
-    .parag{
+    .parag {
         width: 60%;
     }
 }
 
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:52% 0%}
-    50%{background-position:49% 100%}
-    100%{background-position:52% 0%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:52% 0%}
-    50%{background-position:49% 100%}
-    100%{background-position:52% 0%}
-}
+/* Animation for background gradient */
 @keyframes AnimationName {
-    0%{background-position:52% 0%}
-    50%{background-position:49% 100%}
-    100%{background-position:52% 0%}
+    0% {
+        background-position: 52% 0%;
+    }
+    50% {
+        background-position: 49% 100%;
+    }
+    100% {
+        background-position: 52% 0%;
+    }
+}
+
+
+.light-blue {
+    --bg-gradient-start: #007298;
+    --bg-gradient-middle: #b9dcff;
+    --bg-gradient-end: #366285;
+    --text-color: #4682b4;
+    --input-border-color: #00bfff;
+    --input-focus-border-color: #1e90ff;
+    --placeholder-color: #4682b4;
+    --button-bg-color: #00bfff;
+    --completed-border-color: #1e90ff;
+    --completed-text-color: #00bfff;
+    --delete-border-color: #4682b4;
+    --delete-text-color: #1e90ff;
+
+
+    --animation-gradient-start: var(--bg-gradient-start);
+    --animation-gradient-middle: var(--bg-gradient-middle);
+    --animation-gradient-end: var(--bg-gradient-end);
+
+
 }

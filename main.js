@@ -2,6 +2,12 @@ const taskName = document.getElementById("taskName");
 const taskDescription = document.getElementById("taskDescription");
 const container = document.getElementById("taskContainer");
 
+var dropdownBtn = document.querySelector(".themeButton");
+var dropdownContent = document.getElementById("dropdown-content");
+var themeIcon = document.getElementById("themeIcon");
+
+localStorage.setItem("currTheme", 1);
+
 function addTask() {
   if (taskName.value === "" || taskDescription.value === "") {
     alert("Empty Fields enter something");
@@ -93,3 +99,22 @@ function attachEventListeners() {
 }
 
 showData();
+
+var parag = document.getElementsById("parag");
+
+function changeToBlue() {
+  const root = document.documentElement;
+  root.classList.toggle("light-blue"); // Toggle the 'light-blue' class on the :root element
+  document.body.style.animation = "AnimationName 59s ease infinite;";
+  document.getElementById("themeIcon").style.filter =
+    "hue-rotate(180deg) brightness(1.2)";
+}
+
+function change() {
+  if (localStorage.getItem("currTheme")) {
+    console.log("its orange");
+    changeToBlue();
+  } else {
+    changeToOrange();
+  }
+}
